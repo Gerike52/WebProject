@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiba bejelentő</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body class="p-3 mb-2 bg-secondary text-white">
+<div class="container-fluid text-center ">
+    <div>
+        <h1>Bejelentett hibák</h1>
+    </div>
+    <div>
+        <a class="h3 text-dark " th:href="@{/users/new}"> Új hiba bejelentése</a>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="p-3 mb-2 bg-light text-dark">
+                <tr>
+                    <td>ID</td>
+                    <td>Vezetéknév</td>
+                    <td>Keresztnév</td>
+                    <td>Telefonszám</td>
+                    <td>Bejelentett hiba</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody class="p-3 mb-2 bg-info text-white">
+                <th:block th:each="user : ${listUser}">
+                    <tr>
+                        <td>[[${user.id}]]</td>
+                        <td>[[${user.Vezeteknev}]]</td>
+                        <td>[[${user.Keseresztnev}]]</td>
+                        <td>[[${user.Telefonszam}]]</td>
+                        <td>[[${user.Problema}]]</td>
+                        <td>
+                            <a class="h4 mr-3" th:href="@{'/users/edit/' + ${user.id}}">Szerkeszt</a>
+                            <a class="h4" th:href="@{'/users/delete/' + ${user.id}}">Töröl</a>
+                        </td>
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>
